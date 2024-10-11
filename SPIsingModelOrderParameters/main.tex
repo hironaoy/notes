@@ -1,0 +1,43 @@
+\documentclass[aps, 12pt]{revtex4-2}
+
+\usepackage{amsmath}
+\usepackage{physics}
+
+\begin{document}
+\title{Note: Order parameters of the Ising model for ferromegnetism}
+\author{Hironao Yamato}
+\affiliation{Department of Physics, Osaka University}
+\date{\today}
+\maketitle
+
+\section{Magnetization and magnetic susceptibility}
+In dealing with the Ising model for ferromagnetism, let us first define magnetization and magnetic susceptibility. Magnetization, which is often denoted as $M$, is defined as follows.
+\begin{align}
+  M \equiv \sum_{i} \ev{S_i}.
+\end{align}
+Since $M$ is a extensive quantity, as you can see from its definition, it is preferable to define $m$, which is the magntization per site.
+\begin{align}
+  m \equiv \frac{M}{N} = \frac{1}{N} \sum_i \ev{S_i}.
+\end{align}
+As thermodynamics suggest, $m$ can be calculated using the following relation.
+\begin{align}
+  m = -\pdv{g}{h},
+\end{align}
+where $g$ is the free energy per site of the system under consideration. This can be easily proven without deviating the framework of the canonical ensemble:
+\begin{align}
+  g &= -\frac{1}{\beta N} \log Z = -\frac{1}{\beta N} \log \qty{ \sum \exp(\beta J \sum_{(i, j)}S_iS_j + \beta h \sum_i S_i)} \quad \text{and}\\
+  - \pdv{g}{h} &= \frac{1}{N} \sum \qty{\qty(\sum_i S_i)\frac{1}{Z}\exp(\beta J \sum_{(i, j)}S_iS_j + \beta h \sum_i S_i)} = \frac{1}{N} \sum_i \ev{S_i} = m.
+\end{align}
+
+Magnetic susceptibility, which is often denoted as $\chi$, is defined as follows.
+\begin{align}
+  \chi \equiv \frac{\beta}{N}\qty{\ev{\qty(\sum_iS_i)^2} - \ev{\sum_iS_i}^2}.
+\end{align}
+It is worthwhile to konow that $\chi$ can be written in the following form.
+\begin{align}
+  \chi &= \frac{\beta}{N}\qty{\ev{\qty(\sum_i S_i)\qty(\sum_j S_j)} - \qty(\sum_i\ev{S_i})\qty(\sum_j\ev{S_j})} \\
+  &= \frac{\beta}{N}\qty{\sum_i\sum_j \ev{S_i}\ev{S_j} - \qty(\sum_i\ev{S_i})\qty(\sum_j\ev{S_j})} \\
+  &= \frac{\beta}{N}\sum_i\sum_j \qty{\ev{S_iS_j} - \ev{S_i}\ev{S_j}}
+\end{align}
+\bibliography{basename of .bib file}
+\end{document}
