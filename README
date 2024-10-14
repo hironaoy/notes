@@ -1,4 +1,4 @@
-HOW TO CREATE NEW PROJECTS
+HOW TO CREATE A NEW PROJECT
 Move to ~/Physics/Notes/ and run the following command in your teminal.
 $ ./bin/create.sh "project-name"
 
