@@ -1,5 +1,10 @@
 \documentclass[aps, 12pt]{revtex4-2}
 
+%% \usepackage{mathrsfs}
+\usepackage{physics}
+\usepackage{breqn}
+\usepackage{amsmath, amssymb, amsthm}
+
 \begin{document}
 \title{Note: Proof of Lee-Yang Theorem}
 \author{Hironao Yamato}
@@ -7,6 +12,39 @@
 \maketitle
 \section{Lee-Yang Theorem}
 
+\subsection{The setup and lemmas}
+
+\subsection{Generalised proposition and its proof}
+Let
+\begin{dmath}
+ \varXi^{{G}}(\qty{z_j}) = \sum_{\qty{n_j}}\prod_{j}\qty(z_{j})^{n_j}e^{-4\beta\sum_{(j<k)}V_{jk}(n_j - n_k)^2} \quad \text{(grand partition function).} \label{gpf}
+\end{dmath}
+Then the grand partition function $\varXi^{{G}}{(\qty{z_j})}$ is non-zero in ${\displaystyle \bigcap_{j = 1}^{N}}\qty{\qty|z_j| < 1}$. \\
+This proposition can be proven by induction on $N$, which is the number of sites of the system under consideration. \textbf{Supose this proposition is true for the situation which the number of sites are less than or equal to $N - 1$.} (hypothesis) The grand partition function can be written in the following form by calculating the sum over $n_N$ in \eqref{gpf}:
+\begin{dmath}
+  \varXi^{G}(\qty{z_j}) = \sum_{n_N = 0, 1}(z_N)^{n_N} \sum_{\qty{n_j;\, j < N}} \prod_{j < N}\qty(z_j)^{n_j} e^{-4\beta \sum_{k < N}V_{1k}(n_j - n_k)^2} e^{-4\beta\sum_{(j<k<N)}(n_j - n_k)^2} \\
+                        = \sum_{\qty{n_j;\, j < N}} \prod_{j < N}\qty(z_j)^{n_j} e^{-4\beta \sum_{k<N}V_{1k}n_k^2} e^{-4\beta\sum_{(j<k<N)}(n_j - n_k)^2} + z_N\sum_{\qty{n_j;\, j < N}} \prod_{j < N}\qty(z_j)^{n_j} e^{-4\beta \sum_{k < N}V_{1k}(1 - n_k)^2} e^{-4\beta\sum_{(j<k<N)}(n_j - n_k)^2}.
+\end{dmath}
+Since $n_k$ only takes $0$ or $1$,
+\begin{align}
+  e^{-4\beta \sum_{k<N}V_{1k}n_k^2} = e^{-4\beta \sum_{k<N}V_{1k}n_k^2}, \quad e^{-4\beta \sum_{k<N}V_{1k}(1 - n_k)^2} = e^{4\beta \sum_{k<N}V_{1k}n_k - 4\beta\sum_{k<N}V_{1k}}.
+\end{align}
+Then, setting $a_{jk} := e^{-\beta V_{jk}}$,
+\begin{dmath}
+  \varXi^{G}(\qty{z_j}) = \varXi^{G\backslash \qty{N}}(a_{12}z_2, a_{13}z_3, \dots) + z_1a_{12}a_{13}\cdots a_{1N}\varXi^{G\backslash \qty{N}}(z_{2}/a_{12}, z_2/a_{13}, \cdots).
+\end{dmath}
+where $\varXi^{G\backslash \qty{N}}(\qty{z_j})$ is the grand partition function for a system with $N - 1$ sites. In other words, $\varXi^{G\backslash \qty{N}}(\qty{z_j})$ is the grand partition function for the system that the $N$th site is removed. Then using \eqref{id-xi} and \eqref{id-star}, we can write
+\begin{dmath}
+  \varXi^{G}(\qty{z_j}) = \varXi^{G\backslash \qty{N}}(a_{12}z_2, a_{13}z_3, \dots) + z_1z_2 \cdots z_N\varXi^{G\backslash \qty{N}}(a_{12}/z_{2}^*, a_{13}/z_2^*, \cdots). \label{gpf-expanded}
+\end{dmath}
+What we need to show is that $\varXi^{G}(\qty{z_j})$ is non-zero. Suppose \eqref{gpf-expanded} be zero, then at least the following condition must be met.
+\begin{dmath}
+  \qty|\varXi^{G\backslash \qty{N}}(a_{12}z_2, a_{13}z_3, \dots)| = \qty|z_1z_2 \cdots z_N\varXi^{G\backslash \qty{N}}(a_{12}/z_{2}^*, a_{13}/z_2^*, \cdots)|
+\end{dmath}
+Since $\varXi^{G\backslash \qty{N}}(a_{12}z_2, a_{13}z_3, \dots)$ is non-zero by hypothesis, this condition can be rewritten in the following form.
+\begin{dmath}
+  \qty|\frac{z_1z_2 \cdots z_N\varXi^{G\backslash \qty{N}}(a_{12}/z_{2}^*, a_{13}/z_2^*, \cdots)}{\varXi^{G\backslash \qty{N}}(a_{12}z_2, a_{13}z_3, \dots)}| = 1
+\end{dmath}
 
 %% \bibliography{mainNotes}
 \end{document}
