@@ -1,4 +1,0 @@
-\contentsline {title}{Note: }{1}{}
-\tocdepth@munge 
-\tocdepth@restore 
-\contentsline {section}{concurrent echo server}{1}{}

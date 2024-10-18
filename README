@@ -1,8 +1,3 @@
 HOW TO CREATE A NEW PROJECT
 Move to ~/Physics/Notes/ and run the following command in your teminal.
 $ ./bin/create.sh "project-name"
-
-ABOUT DIRECTORY NAMES
-The first two or three charactors of the directory names specify the division of its contents, and the brief explanation of its contents follows.
- - SP  stands for Statistical Physics.
- - QFT stands for Quantum Field Theory.

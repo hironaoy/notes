@@ -25,7 +25,7 @@ As thermodynamics suggests, $m$ can be calculated using the following relation.
 \end{align}
 where $g$ is the free energy per site of the system under consideration. This can be easily proven without deviating the framework of the canonical ensemble:
 \begin{align}
-  g &= -\frac{1}{\beta N} \log Z = -\frac{1}{\beta N} \log \qty{ \sum \exp(\beta J \sum_{(i, j)}S_iS_j + \beta h \sum_i S_i)} \quad \text{and}\\
+  g            &= -\frac{1}{\beta N} \log Z = -\frac{1}{\beta N} \log \qty{ \sum \exp(\beta J \sum_{(i, j)}S_iS_j + \beta h \sum_i S_i)} \quad \text{and} \\
   - \pdv{g}{h} &= \frac{1}{N} \sum \qty{\qty(\sum_i S_i)\frac{1}{Z}\exp(\beta J \sum_{(i, j)}S_iS_j + \beta h \sum_i S_i)} = \frac{1}{N} \sum_i \ev{S_i} = m.
 \end{align}
 
@@ -36,8 +36,8 @@ Magnetic susceptibility, which is often denoted as $\chi$, is defined as follows
 It is worthwhile to know that $\chi$ can be written in the following form.
 \begin{align}
   \chi &= \frac{\beta}{N}\qty{\ev{\qty(\sum_i S_i)\qty(\sum_j S_j)} - \qty(\sum_i\ev{S_i})\qty(\sum_j\ev{S_j})} \\
-  &= \frac{\beta}{N}\qty{\sum_i\sum_j \ev{S_iS_j} - \qty(\sum_i\ev{S_i})\qty(\sum_j\ev{S_j})} \\
-  &= \frac{\beta}{N}\sum_i\sum_j \qty{\ev{S_iS_j} - \ev{S_i}\ev{S_j}}
+       &= \frac{\beta}{N}\qty{\sum_i\sum_j \ev{S_iS_j} - \qty(\sum_i\ev{S_i})\qty(\sum_j\ev{S_j})}              \\
+       &= \frac{\beta}{N}\sum_i\sum_j \qty{\ev{S_iS_j} - \ev{S_i}\ev{S_j}}
 \end{align}
 \bibliography{basename of .bib file}
 \end{document}
