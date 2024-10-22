@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.4.5)  20 OCT 2024 17:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.4.5)  21 OCT 2024 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -358,7 +358,11 @@ lass! (Proceeding with fingers crossed.) on input line 8.
 Class revtex4-2 Info: cite was not loaded (OK!) on input line 8.
 Class revtex4-2 Info: mcite was not loaded (OK!) on input line 8.
 Class revtex4-2 Info: multicol was not loaded (OK!) on input line 8.
- (./main.aux)
+ (./main.aux
+
+LaTeX Warning: Label `gpf' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -375,8 +379,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count298
 \scratchdimen=\dimen177
@@ -414,27 +417,31 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: Reference `id-xi' on page 1 undefined on input line 36.
+LaTeX Warning: Reference `id-xi' on page 2 undefined on input line 62.
 
 
-LaTeX Warning: Reference `id-star' on page 1 undefined on input line 36.
+LaTeX Warning: Reference `id-star' on page 2 undefined on input line 62.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (51.55807pt too wide) detected at line 56
+[2]
+Overfull \hbox (51.55807pt too wide) detected at line 82
 []
  []
 
 
-Overfull \hbox (24.52866pt too wide) detected at line 60
+Overfull \hbox (24.52866pt too wide) detected at line 86
 []
  []
 
 
-LaTeX Warning: Reference `id-xi' on page 2 undefined on input line 67.
+LaTeX Warning: Reference `id-xi' on page 3 undefined on input line 93.
 
-[2] (./main.bbl) [3] (./main.aux)
+(./main.bbl
+
+Package natbib Warning: Empty `thebibliography' environment on input line 53.
+
+) [3] (./main.aux)
  ***********
 LaTeX2e <2023-06-01>
 L3 programming layer <2023-06-05>
@@ -443,12 +450,15 @@ L3 programming layer <2023-06-05>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 6151 strings out of 475735
- 83392 string characters out of 5784787
- 1884759 words of memory out of 5000000
- 26842 multiletter control sequences out of 15000+600000
+ 6152 strings out of 475735
+ 83403 string characters out of 5784787
+ 1880759 words of memory out of 5000000
+ 26843 multiletter control sequences out of 15000+600000
  523012 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,15n,93p,436b,290s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -466,7 +476,7 @@ m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (3 pages, 169009 bytes).
+Output written on main.pdf (3 pages, 173003 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream

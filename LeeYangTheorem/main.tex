@@ -12,15 +12,41 @@
 \date{\today}
 \maketitle
 \section{The setup and lemmas}
+We will be dealing with the following grand partition function in this document.
+\begin{align}
+  \varXi^{{G}}(\qty{z_j}) = \sum_{\qty{n_j = 0, 1}}\prod_{j}\qty(z_{j})^{n_j}e^{-4\beta\sum_{(j<k)}V_{jk}(n_j - n_k)^2} \quad \text{(grand partition function)}\label{gpf}
+\end{align}
+This grand partition function is for Ising model or lattice gas model.
 
+In order to facilitate the discussion in the next section, let us first introduce two identities and a theorem.
+
+\noindent
+\textbf{Lemma.} \, The grand partition function \eqref{gpf} satisfies the following identity.
+\begin{align}
+  \varXi^G(\qty{z_j}) = z_1z_2 \cdots z_N\varXi^G(\qty{1/z_j})
+\end{align}
+\underline{Proof.}\quad By simply calculating the right-hand side, 
+\begin{align}
+  z_1z_2 \cdots z_N \varXi^G(\qty{1/z_j}) &= z_1z_2 \cdots z_N \sum_{\qty{n_j = 0, 1}} \prod_{j = 1}^N\qty(\frac{1}{z_j})^{n_j} e^{-4\beta\sum_{(j<k)}V_{jk}(n_j - n_k)^2} \nonumber \\
+  &= \sum_{\qty{n_j = 0, 1}} \prod_{j = 1}^N z_j^{1 - n_j} e^{-4\beta\sum_{(j<k)}V_{jk}(n_j - n_k)^2} \nonumber \\
+  &= \sum_{\qty{m_j = 1, 0}} \prod_{j = 1}^N z_j^{m_j} e^{-4\beta\sum_{(j<k)}V_{jk}(m_j - m_k)^2} \quad \qty(m_j := 1 - m_j)
+\end{align}
+Here, $nj$ and $m_j$ are dummy index, then we are done. \hfill \rule{1.5mm}{3.5mm}
+
+\noindent
+\textbf{Lemma.}\quad The grand partition function \eqref{gpf} satisfies the following identity.
+\begin{align}
+  \varXi^G(\qty{z_j}) = \qty{\varXi^G(\qty{z_j^*})}^*
+\end{align}
+\underline{Proof.}\quad Obivous.
 \section{Generalised proposition and its proof}
 \noindent
 \textbf{Proposition.} \, Let
 \begin{dmath}
- \varXi^{{G}}(\qty{z_j}) = \sum_{\qty{n_j}}\prod_{j}\qty(z_{j})^{n_j}e^{-4\beta\sum_{(j<k)}V_{jk}(n_j - n_k)^2} \quad \text{(grand partition function).} \label{gpf}
+ \varXi^{{G}}(\qty{z_j}) = \sum_{\qty{n_j = 0, 1}}\prod_{j}\qty(z_{j})^{n_j}e^{-4\beta\sum_{(j<k)}V_{jk}(n_j - n_k)^2} \quad \text{(grand partition function).} \label{gpf}
 \end{dmath}
 Then the grand partition function $\varXi^{{G}}{(\qty{z_j})}$ is non-zero in ${\displaystyle \bigcap_{j = 1}^{N}}\qty{\qty|z_j| < 1}$. \\
-\underline{Proof}\quad This proposition can be proven by induction on $N$, which is the number of sites of the system under consideration. \textbf{Suppose this proposition is true for the situation which the number of sites are less than or equal to $N - 1$.} The grand partition function can be written in the following form by calculating the sum over $n_N$ in \eqref{gpf}:
+\underline{Proof.}\quad This proposition can be proven by induction on $N$, which is the number of sites of the system under consideration. \textbf{Suppose this proposition is true for the situation which the number of sites are less than or equal to $N - 1$.} The grand partition function can be written in the following form by calculating the sum over $n_N$ in \eqref{gpf}:
 \begin{dmath}
   \varXi^{G}(\qty{z_j}) = \sum_{n_N = 0, 1}(z_N)^{n_N} \sum_{\qty{n_j;\, j < N}} \prod_{j < N}\qty(z_j)^{n_j} e^{-4\beta \sum_{k < N}V_{1k}(n_j - n_k)^2} e^{-4\beta\sum_{(j<k<N)}(n_j - n_k)^2} \\
                         = \sum_{\qty{n_j;\, j < N}} \prod_{j < N}\qty(z_j)^{n_j} e^{-4\beta \sum_{k<N}V_{1k}n_k^2} e^{-4\beta\sum_{(j<k<N)}(n_j - n_k)^2} + z_N\sum_{\qty{n_j;\, j < N}} \prod_{j < N}\qty(z_j)^{n_j} e^{-4\beta \sum_{k < N}V_{1k}(1 - n_k)^2} e^{-4\beta\sum_{(j<k<N)}(n_j - n_k)^2}.
@@ -58,20 +84,21 @@ Also, since $\qty|z_j| = 1$, we can replace $1/z_j^*$ with $z_j$. Then we get
 \begin{align}
   \sup_{\qty|a_{1j}| \leq 1} \sup_{\qty|z_j| < 1} \qty|\frac{z_1z_2 \cdots z_N\varXi^{G\backslash \qty{N}}(a_{12}/z_{2}^*, a_{13}/z_2^*, \cdots)}{\varXi^{G\backslash \qty{N}}(a_{12}z_2, a_{13}z_3, \dots)}| < \sup_{\qty|a_{1j}| \leq 1} \sup_{\qty|z_j| = 1} \qty|\frac{\varXi^{G\backslash \qty{N}}(a_{12}/z_{2}^*, a_{13}/z_2^*, \cdots)}{\varXi^{G\backslash \qty{N}}(a_{12}z_2, a_{13}z_3, \dots)}| = 1.
 \end{align}
-Here, we proved \eqref{suffic-con} which proves the negation of \eqref{unitcirc} which proves that the grand partition function for a system with $N$ sites is non-zero under the hypothesis that grand partition function for a system with $N-1$ sites is non-zero. Then, we are done with the proof. \hfill \rule{1.5mm}{3.5mm}
+Here, we proved \eqref{suffic-con} which proves the negation of \eqref{unitcirc} which proves that the grand partition function for a system with $N$ sites is non-zero under the hypothesis that grand partition function for a system with $N-1$ sites is non-zero. Then, we are done. \hfill \rule{1.5mm}{3.5mm}
 \section{Lee-Yang Theorem}
 Now, we specialise to the case when all the $z_j$ are $z$, and $\varXi^{G}(z)$ is a polynomial of degree $N$.
 
 \noindent
 \textbf{Theorem.} \, The zeros of $\varXi^G(z)$ all lie on the unit circle $\qty{z; \,\qty|z| = 1}$ if exist. \\
-\underline{Proof}\quad From the proposition we proved in the last section, the interior of the unit circle is free of zeros. From \eqref{id-xi}, which with the proposition leads to
+\underline{Proof.}\quad From the proposition we proved in the last section, the interior of the unit circle is free of zeros. From \eqref{id-xi}, which with the proposition leads to
 \begin{align} 
   \varXi^{G}(z) = z^N \varXi^{G}(1/z) \ne 0 \quad \text{in} \quad \qty{z;\, \qty|z| < 1},
 \end{align}
 it is also non-zero in the exterior. In order to check that we can subsititute $1/z$ with some other variable $w$:
 \begin{dmath}
-  \frac{\varXi^G(w)}{w^N} \ne 0 \quad \text{in} \quad \qty{w; \, \qty{w} > 1}
+  \frac{\varXi^G(w)}{w^N} \ne 0 \quad \text{in} \quad \qty{w; \, \qty|w| > 1}
 \end{dmath}
-We are done with the proof. \hfill \rule{1.5mm}{3.5mm}
-%% \bibliography{mainNotes}
+We are done. \hfill \rule{1.5mm}{3.5mm}
+
+\bibliography{mainNotes}
 \end{document}
