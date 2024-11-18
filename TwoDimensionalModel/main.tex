@@ -10,7 +10,8 @@
 \date{\today}
 \maketitle
 
-\newcommand{\square}{\tikz\draw (0em, 0em) -- (-1em, 1em) -- (-1em, -1em) -- (1em, -1em) -- cycle;}
+\newcommand{\square}{\tikz \draw (0, 0) -- (0.7, 0) -- (0.7, 0.7) -- (0, 0.7) -- (0, 0);}
+\newcommand{\rectangle}{\tikz \draw (0, 0) -- (1.4, 0) -- (1.4, 0.7) -- (0, 0.7) -- (0, 0);}
 \section{The setup}
 In this document we will be dealing with two-dimensional Ising model, which is the statistical-mechanical model of a system with a Hamiltonian
 \begin{align*}
@@ -39,11 +40,26 @@ Here, we used the identity
 \end{align*}
 In the end, the partition function can be written in the following form.
 \begin{align*}
-  Z = 2^N \cosh^{2N}(\beta J) \sum_{k = 0}^{N} g(k)z^k
+  Z = 2^N \cosh^{2N}(\beta J) \tilde{Z}, \quad \tilde{Z} := \sum_{k = 0}^{N} g(k)z^k
 \end{align*}
 Here we defined $g(k)$, which is the number of diagrams comprised of $k$ edges.
 
 \section{Loop expansion}
-In order for us to calculate the partition function, 
+By intepreting $\tilde{Z}$ as a sum of undirected loops instead of a sum of diagrams, we can map the system to a random walk problem. But the problem is that the sum of undirected loop does not necesarily equal the sum of diagrams. We can avoid this problem by summing up with a weight $(-1)^t$ where $t$ is the number of unavoidable self-intersections.
+
+Now classifying the loops by the number of bonds and shape, the sum can be expressed in the following form.
+\begin{align*}
+  \tilde{Z} &= 1 + \sum \raisebox{-2.5mm}{\,\square\,} + \sum \qty(\raisebox{-2.5mm}{\,\square\,})^2 + \sum \qty(\raisebox{-2.5mm}{\,\square\,})^3 + \cdots \\
+            & \quad + 1 + \sum \raisebox{-2.5mm}{\,\square\,\rectangle\,} + \sum \qty(\raisebox{-2.5mm}{\,\square\,\rectangle\,})^2 + \sum \qty(\raisebox{-2.5mm}{\,\square\,\rectangle\,})^3 + \cdots \\
+  & \quad + 1 + \sum \raisebox{-2.5mm}{\,\rectangle\,} + \sum \qty(\raisebox{-2.5mm}{\,\rectangle\,})^2 + \sum \qty(\raisebox{-2.5mm}{\,\rectangle\,})^3 + \cdots \\
+  &= \exp(\sum \raisebox{-2.5mm}{\,\square\,} + \sum \raisebox{-2.5mm}{\,\rectangle\,} + \cdots)
+\end{align*}
+For simplicity, we only consider the argument of exponetial.
+\begin{align*}
+  \log \tilde{Z} =: - \sum_{k = 0}^{\infty} f(k)z^k
+\end{align*}
+
+
+\section{Mapping the system to a random walk problem}
 \bibliography{basename of .bib file}
 \end{document}
