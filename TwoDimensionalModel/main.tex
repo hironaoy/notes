@@ -1,0 +1,49 @@
+\documentclass[aps, 12pt]{revtex4-2}
+
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\begin{document}
+\title{Note: Exact Solution of Two Dimensional Ising Model}
+\author{Hironao Yamato}
+\date{\today}
+\maketitle
+
+\newcommand{\square}{\tikz\draw (0em, 0em) -- (-1em, 1em) -- (-1em, -1em) -- (1em, -1em) -- cycle;}
+\section{The setup}
+In this document we will be dealing with two-dimensional Ising model, which is the statistical-mechanical model of a system with a Hamiltonian
+\begin{align*}
+  \mathscr{H} = - J \sum_{j,k} s_js_k.
+\end{align*}
+Here we defined the spin variable $s_j$ which takes $\pm 1$. For convenience, let us now put these spins on the two-dimensional lattice and label them by the colomn and row number $(n ,m)$. Then the Hamiltonian can be rewritten in the following form.
+\begin{align*}
+  \mathscr{H} = - J \sum_{n, m}s_{n, m}s_{n, m+1} - J\sum_{n, m} s_{n, m}s_{n+1, m}.
+\end{align*}
+Now, our job is to calculate the partition function for this system
+\begin{align*}
+  Z = \sum_{\qty{s}} \exp(-\beta \mathscr{H}) = \sum_{\qty{s}}\exp[\beta J \sum_{n, m}\qty(s_{n,m}s_{n,m+1} + s_{n, m}s_{n+1,m})].
+\end{align*}
+The exact solution for the problem was first given by Onsager and subsequently given by many other physicists including the Japanese physicist Nanbu. The solution we will see in this document is neither Onsarger's nor Nambu's solution, but the one given by Vdovicheko.
+
+\section{High-temperature expansion}
+First of all, let us rewrite the partition function in the following form.
+\begin{align*}
+  Z &= \sum_{\qty{s}} \prod_{n, m} e^{\beta J\qty(s_{n,m}s_{n,m+1} + s_{n,m}s_{n+1,m})} \\
+  &= \cosh^{2N}(\beta J)\sum_{\qty{s}} \prod_{n, m}\qty(1+ s_{n,m}s_{n,m+1}z)\qty(1+ s_{n,m}s_{n+1,m}z)
+  \quad\mathrm{where}\quad z := \tanh(\beta J).
+\end{align*}
+Here, we used the identity
+\begin{align*}
+  e^{x ss'} = \cosh x + ss' \sinh x.
+\end{align*}
+In the end, the partition function can be written in the following form.
+\begin{align*}
+  Z = 2^N \cosh^{2N}(\beta J) \sum_{k = 0}^{N} g(k)z^k
+\end{align*}
+Here we defined $g(k)$, which is the number of diagrams comprised of $k$ edges.
+
+\section{Loop expansion}
+In order for us to calculate the partition function, 
+\bibliography{basename of .bib file}
+\end{document}
