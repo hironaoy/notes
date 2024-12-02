@@ -13,6 +13,8 @@
   sharp corners
 }
 
+\numberwithin{equation}{section}
+
 \newtheoremstyle{seminar}
   {1ex}
   {1ex}
@@ -23,14 +25,28 @@
   {1em}
   {}
 
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item\relax
+  {\itshape
+  #1\@addpunct{ }}\hspace\labelsep\ignorespaces
+}{
+  \popQED\endtrivlist\@endpefalse
+}
 
+\makeatother
 \theoremstyle{seminar}                            
 \newtheorem{theorem}{定理}[section]
 \newtheorem{definition}{定義}[section]
 \newtheorem{proposition}{命題}[section]
 \newtheorem{axiom}{公理}[section]
 \newtheorem{example}{例}[section]
+\newtheorem{corollary}{系}[section]
 \newtheorem{remark}{注}[section]
+\newtheorem*{solution}{（解）}
 
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\st}{\,\mathrm{s.t.}\,}
@@ -57,43 +73,145 @@
 \date{}
 \begin{document}
 \maketitle
-\section{誤差に関する重要な定理}
+\section{エラーに関する重要な定理（教科書1.6節）}
+最初に演算子に対してノルムを定めておく。
+\begin{definition}
+  演算子$A$のノルムを${\displaystyle \| A \| = \sup_{\|\ket{\varphi}\| = 1} \| A \ket{\varphi} \|}$と定める。これはノルムが満たすべき性質をすべて満たす。
+\end{definition}
+\begin{remark}
+  明らかにユニタリ演算子のノルムは1である。
+\end{remark}
+%% TODO - ノルムの性質を書いておくこと
+ローカルなエラーのグローバルなエラーへの寄与に関して次の2つの重要な定理がある。
+\begin{proposition}
+  ユニタリ演算子
+  \begin{align}
+    U_j, \tilde{U}_j \in \mathbb{C}^{N \times N} ; \quad \| U_j - \tilde{U}_j\| < \epsilon, \quad j = 1, 2, \cdots, K
+  \end{align}
+  に対して、次が成り立つ。
+  \begin{align}
+    \| U_K \cdots U_1 - \tilde{U}_K \cdots \tilde{U}_i \| \leq K\epsilon
+  \end{align}
+\end{proposition}
+
+\begin{proof}
+  次の式変形が可能である。
+  \begin{align}
+    \begin{split}
+      \|U_K \cdots U_1 - \tilde{U}_K \cdots \tilde{U}_i\|
+      &= \| U_K U_{K-1} \cdots U_3U_2U_1 - U_KU_{K-1} \cdots U_3U_2\tilde{U}_1 \\
+      &\,\,\,\,+ U_K U_{K-1} \cdots U_3U_2\tilde{U}_1 - U_KU_{K-1} \cdots U_3\tilde{U}_2\tilde{U}_1 \\
+      &\,\,\,\,+ \cdots \\
+      &\,\,\,\,+ U_K \tilde{U}_{K-1} \cdots \tilde{U}_3 \tilde{U}_2 \tilde{U}_1 - \tilde{U}_K \tilde{U}_{K-1} \cdots \tilde{U}_3 \tilde{U}_2 \tilde{U}_1 \| \\
+      &= \| U_K U_{K-1} \cdots U_3 U_2 (U_1 - \tilde{U}_1) + U_K U_{K-1} \cdots U_3 (U_2 - \tilde{U}_2) \tilde{U}_1 \\ &\,\,\,\,+  \cdots + (U_K - \tilde{U}_{K})\tilde{U}_{K-1} \cdots \tilde{U}_3 \tilde{U}_2 \tilde{U}_1 \| \\
+      &\leq \| U_K U_{K-1} \cdots U_3 U_2 (U_1 - \tilde{U}_1) \| + \| U_K U_{K-1} \cdots U_3 (U_2 - \tilde{U}_2) \tilde{U}_1 \| \\
+      &\,\,\,\,+ \cdots + \| U_K U_{K-1} \cdots U_3 (U_2 - \tilde{U}_2) \tilde{U}_1 \| \\
+      &= \| U_1 - \tilde{U}_1 \| + \| U_2 - \tilde{U}_2 \| + \cdots + \| U_K - \tilde{U}_{K-1} \| 
+    \end{split}
+  \end{align}
+  ここで、ノルムの三角不等式、劣乗法性、および、ユニタリ演算子のノルムが1であることを用いている。よって
+  \begin{align}
+    \|U_K \cdots U_1 - \tilde{U}_K \cdots \tilde{U}_i\| \leq \sum_{j = 1}^{K} \| U_j - \tilde{U}_j \| \leq K\epsilon
+  \end{align}
+  を得る。
+\end{proof}
 
 \begin{proposition}
-  
+  Schrödinger方程式を満たす時間発展演算子
+  \begin{align}
+    U(t), \tilde{U}(t) \in \mathbb{C}^{N \times N}; \quad i\dv{U(t)}{t} = HU(t), \quad i\dv{\tilde{U}(t)}{t} = H\tilde{U}(t) + B(t), \quad U(0) = \tilde{U}(0) = I
+  \end{align}
+  に対して次が成り立つ。
+  \begin{align}
+    \tilde{U}(t) = U(t) - i \int_0^t \dd t' U(t - t')B(t'), \quad \| U(t) - \tilde{U}(t) \| < \int_0^t \dd t' \| B(t')\| \label{solution}
+  \end{align}
 \end{proposition}
 
 \begin{proof}
   
 \end{proof}
 
-\begin{proposition}
-  
-\end{proposition}
+\begin{remark}
+  命題1.2は斉次方程式の解$U(t)$が与えられたとき、非斉次方程式の解$\tilde{U}(t)$が
+  \begin{align}
+    \tilde{U}(t) = U(t) - i\int_0^t \dd t' U(t - t')B(t')
+  \end{align}
+  で与えられる、という命題であるとみなせる。
+\end{remark}
 
-\begin{proof}
-  
-\end{proof}
+\begin{corollary}
+  命題1.2において$B(t) = E(t)\tilde{U}(t)$（ここで、$E(t)$は各時刻におけるエラーである）とすると
+  \begin{align}
+    \| U(t) - \tilde{U}(t) \| < \int_0^t \dd t' \| E(t') \|
+  \end{align}
+  を得る。これは時間発展演算子に関する命題1.1の連続な場合への拡張とみなせる。
+\end{corollary}
+\section{量子ゲートの構成（教科書1.7節）}
 
-\section{量子ゲートの構成}
-\begin{theorem}
-  
+\begin{definition}
+  量子ゲートの集合$\mathcal{S}$を用いて任意のユニタリ演算子$U$を任意の精度$\epsilon$で構成できるとき、つまり
+  \begin{align}
+    \| U - U_m U_{m-1} \cdots U_1 \| < \epsilon, \quad U_j \in \mathcal{S}, \quad j = 1, 2, \cdots, m
+  \end{align}
+  となる$U_j$を取ることができるとき、集合$\mathcal{S}$は{\bf ユニバーサル}（universal）であるという。
+\end{definition}
+
+\begin{remark}
+  ユニバーサルな量子ゲートの集合$\mathcal{S}$は存在し、複数存在する。
+\end{remark}
+
+複数存在するユニバーサルな量子ゲートの集合$\mathcal{S}$がすべて等価であることを主張する定理がある。証明は省略。
+\begin{theorem}（Solovay \& Kitaev）
+  逆元が定義されている量子ゲートの集合$\mathcal{S}, \mathcal{T}$はユニバーサルであるとする。$\mathcal{S}$に含まれる$m$個の量子ゲートからなる任意の量子回路は$\mathcal{T}$に含まれる$\mathcal{O}\qty(m \log^c (m / \epsilon))$個の量子ゲートを用いて再現できる。そして、そのような回路の構成を$\mathcal{O}\qty(m \log^c (m / \epsilon))$の時間で発見する古典アルゴリズムが存在する。
 \end{theorem}
 
+\begin{example}
+  ユニバーサルな量子ゲートの集合の例として
+  \begin{align}
+    \qty{H, T, \mathrm{CNOT}}, \quad \qty{H, \mathrm{Toffoli}}
+  \end{align}
+  などがある。
+\end{example}
+
+\section{量子計算機の性能（教科書1.7節）}
+\begin{proposition}
+  任意の古典回路は量子回路を用いて再現できる。
+\end{proposition}
+
 \begin{proof}
-  
+  古典回路$x \mapsto f(x)$は不可逆な過程を含む。しかし、量子回路においてはユニタリ演算子で表される過程を考えるので、まずは古典回路を可逆なものに書き換えることから始めなければならない。よって、次のようにする。
+  \begin{align}
+    (x, y) \mapsto (x, y \oplus f(x))
+  \end{align}
+  特に$y = 0$として、$(x, 0) \mapsto (x, f(x))$を考える。キーとなるアイデアは、初期状態$x$を保持しておく、というものである。つまり、量子回路で次のようなものを実装したい。
+  \begin{align}
+    \ket{0^m}\ket{x} \mapsto \ket{f(x)}\ket{x}
+  \end{align}
 \end{proof}
 
 \begin{gray}
-  {\bf Exercise 1.8}
+  {\bf Exercise 1.8}\hspace{1em}次の演算子を量子回路として実装せよ。
+  \begin{align}
+    &\ket{0^m} \ket{g(x)} \ket{f(x)} \ket{x} \mapsto \ket{f(x)} \ket{g(x)} \ket{f(x)} \ket{x}, \quad\ket{f(x)} \ket{0^w} \ket{0^m} \ket{x} \mapsto \ket{0^m} \ket{0^w} \ket{f(x)} \ket{x} \notag
+  \end{align}
 \end{gray}
 
-\begin{gray}
-  {\bf Exercise 1.9}
-\end{gray}
+\begin{solution}
+  
+\end{solution}
 
 \begin{gray}
-  {\bf Exercise 1.10}
+  {\bf Exercise 1.9}\hspace{1em}$f: \qty{0, 1}^n \rightarrow \qty{0, 1}^n$が全単射であるならば、逆写像が存在し、量子回路
+  \begin{align}
+    U_f : \ket{x} \mapsto \ket{f(x)} \notag
+  \end{align}
+  を実装できることを示せ。
 \end{gray}
+
+\begin{solution}
+  一般の写像$f: X \rightarrow Y$に対して$f$が全単射ならば、逆写像が存在する。
+\end{solution}
+
+\section{固定少数点数の表現（教科書1.8節）}
 
 \end{document}
