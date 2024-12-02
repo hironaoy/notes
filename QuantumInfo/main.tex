@@ -1,0 +1,99 @@
+\documentclass[dvipdfmx]{jarticle}
+
+\usepackage{tcolorbox}
+\usepackage[margin = 20mm]{geometry}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{physics}
+\usepackage{titlesec}
+\titleformat{\section}[hang]{\bfseries\gtfamily}{\thesection}{12pt}{}
+
+\newtcolorbox{gray}{
+  colback = gray!30!white,
+  colframe = gray!30!white,
+  sharp corners
+}
+
+\newtheoremstyle{seminar}
+  {1ex}
+  {1ex}
+  {}
+  {}
+  {\bfseries}
+  {}
+  {1em}
+  {}
+
+
+\theoremstyle{seminar}                            
+\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}{定義}[section]
+\newtheorem{proposition}{命題}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{remark}{注}[section]
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\st}{\,\mathrm{s.t.}\,}
+
+\renewcommand{\proofname}{\textbf{証明}}                          
+
+\makeatletter
+\def\@maketitle{
+\begin{flushright}
+{\large \@date}
+\end{flushright}
+\begin{center}
+{\large \@title \par}
+\end{center}
+\begin{flushright}
+{\@author}
+\end{flushright} 
+\par\vskip 1.5em
+}
+\makeatother
+
+\title{{\bf Lecture Note on Quantum Algorithms for Scientific Computation\footnote{\texttt{https://arxiv.org/abs/2201.08309}} 輪講メモ}}
+\author{阪大原子核理論研　大和 寛尚}
+\date{}
+\begin{document}
+\maketitle
+\section{誤差に関する重要な定理}
+
+\begin{proposition}
+  
+\end{proposition}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{proposition}
+  
+\end{proposition}
+
+\begin{proof}
+  
+\end{proof}
+
+\section{量子ゲートの構成}
+\begin{theorem}
+  
+\end{theorem}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{gray}
+  {\bf Exercise 1.8}
+\end{gray}
+
+\begin{gray}
+  {\bf Exercise 1.9}
+\end{gray}
+
+\begin{gray}
+  {\bf Exercise 1.10}
+\end{gray}
+
+\end{document}
