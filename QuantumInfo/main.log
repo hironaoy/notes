@@ -1,12 +1,11 @@
-This is e-upTeX, Version 3.141592653-p4.1.0-u1.29-230214-2.6 (utf8.euc) (TeX Live 2023/Debian) (preloaded format=platex 2024.4.5)  3 DEC 2024 23:18
+This is e-pTeX, Version 3.141592653-p4.0.0-220214-2.6 (utf8.euc) (TeX Live 2022/Debian) (preloaded format=platex 2023.8.10)  4 DEC 2024 16:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-pLaTeX2e <2023-02-14>+1, based on
-LaTeX2e <2023-06-01>
-L3 programming layer <2023-06-05>
+pLaTeX2e <2021-11-15>+1 (based on LaTeX2e <2022-11-01> patch level 1)
+L3 programming layer <2023-01-16>
 (/usr/share/texlive/texmf-dist/tex/platex/base/jarticle.cls
 Document Class: jarticle 2020/09/30 v1.8f Standard pLaTeX class
 \c@@paper=\count184
@@ -50,14 +49,14 @@ Loading kernel: messages; fonts; allocations: state,
 \D@c=\dimen162
 \L@c=\dimen163
 \R@c=\dimen164
-\Edge@c=\toks18
+\Edge@c=\toks17
 \X@p=\dimen165
 \Y@p=\dimen166
 \U@p=\dimen167
 \D@p=\dimen168
 \L@p=\dimen169
 \R@p=\dimen170
-\Edge@p=\toks19
+\Edge@p=\toks18
 \X@origin=\dimen171
 \Y@origin=\dimen172
 \X@xbase=\dimen173
@@ -85,10 +84,10 @@ Loading kernel: messages; fonts; allocations: state,
 \quotPTK@=\dimen186
 
 utility macros; pictures: \xy, positions,
-\swaptoks@@=\toks20
+\swaptoks@@=\toks19
 \connectobjectbox@@=\box70
  objects,
-\styletoks@=\toks21
+\styletoks@=\toks20
  decorations;
 kernel objects: directionals, circles, text; options; algorithms: directions,
 edges, connections;  Xy-pic loaded)
@@ -106,8 +105,8 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
  Xy-pic option: Matrix feature v.3.14
 \Row=\count198
 \Col=\count199
-\queue@=\toks22
-\queue@@=\toks23
+\queue@=\toks21
+\queue@@=\toks22
 \qcount@=\count266
 \qcount@@=\count267
 \matrixsize@=\count268
@@ -119,7 +118,7 @@ Xy-pic pdf driver: `frame' extension support
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xycurve.tex
  Xy-pic option: Curve and Spline extension v.3.12 curve,
 \crv@cnt@=\count269
-\crvpts@=\toks24
+\crvpts@=\toks23
 \splinebox@=\box71
 \splineval@=\dimen187
 \splinedepth@=\dimen188
@@ -167,12 +166,12 @@ Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup5
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2023/03/17 version 6.0.3 text color boxes
+Package: tcolorbox 2022/06/24 version 5.1.1 text color boxes
 
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks25
+\pgfutil@everybye=\toks24
 \pgfutil@tempdima=\dimen193
 \pgfutil@tempdimb=\dimen194
 )
@@ -191,7 +190,7 @@ Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks26
+\KV@toks@=\toks25
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
@@ -215,12 +214,12 @@ File: dvipdfmx.def 2022/09/22 v5.0m Graphics/color driver for dvipdfmx
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks27
-\pgfkeys@temptoks=\toks28
+\pgfkeys@pathtoks=\toks26
+\pgfkeys@temptoks=\toks27
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
 .code.tex
-\pgfkeys@tmptoks=\toks29
+\pgfkeys@tmptoks=\toks28
 ))
 \pgf@x=\dimen197
 \pgf@y=\dimen198
@@ -238,9 +237,9 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \c@pgf@countb=\count271
 \c@pgf@countc=\count272
 \c@pgf@countd=\count273
-\t@pgf@toka=\toks30
-\t@pgf@tokb=\toks31
-\t@pgf@tokc=\toks32
+\t@pgf@toka=\toks29
+\t@pgf@tokb=\toks30
+\t@pgf@tokc=\toks31
 \pgf@sys@id@count=\count274
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
@@ -291,9 +290,9 @@ Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 \pgfmath@dimen=\dimen263
 \pgfmath@count=\count278
 \pgfmath@box=\box73
-\pgfmath@toks=\toks33
-\pgfmath@stack@operand=\toks34
-\pgfmath@stack@operation=\toks35
+\pgfmath@toks=\toks32
+\pgfmath@stack@operand=\toks33
+\pgfmath@stack@operation=\toks34
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
@@ -429,8 +428,8 @@ Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks36
-\verbatim@line=\toks37
+\every@verbatim=\toks35
+\verbatim@line=\toks36
 \verbatim@in@stream=\read4
 )
 (/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
@@ -439,7 +438,7 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
-\@envbody=\toks38
+\@envbody=\toks37
 )
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
@@ -474,10 +473,10 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen295
 \Gm@layouthoffset=\dimen296
 \Gm@layoutvoffset=\dimen297
-\Gm@dimlist=\toks39
+\Gm@dimlist=\toks38
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2023/05/13 v2.17o AMS math features
+Package: amsmath 2022/04/08 v2.17n AMS math features
 \@mathmargin=\skip50
 
 For additional information on amsmath, use the `?' option.
@@ -486,7 +485,7 @@ Package: amstext 2021/08/26 v2.01 AMS text
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks40
+\@emptytoks=\toks39
 \ex@=\dimen298
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -526,35 +525,35 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \dotsspace@=\muskip16
 \c@parentequation=\count297
 \dspbrk@lvl=\count298
-\tag@help=\toks41
+\tag@help=\toks40
 \row@=\count299
 \column@=\count300
 \maxfields@=\count301
-\andhelp@=\toks42
+\andhelp@=\toks41
 \eqnshift@=\dimen301
 \alignsep@=\dimen302
 \tagshift@=\dimen303
 \tagwidth@=\dimen304
 \totwidth@=\dimen305
 \lineht@=\dimen306
-\@envbody=\toks43
+\@envbody=\toks42
 \multlinegap=\skip51
 \multlinetaggap=\skip52
-\mathdisplay@stack=\toks44
+\mathdisplay@stack=\toks43
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks45
-\thm@bodyfont=\toks46
-\thm@headfont=\toks47
-\thm@notefont=\toks48
-\thm@headpunct=\toks49
+\thm@style=\toks44
+\thm@bodyfont=\toks45
+\thm@headfont=\toks46
+\thm@notefont=\toks47
+\thm@headpunct=\toks48
 \thm@preskip=\skip53
 \thm@postskip=\skip54
 \thm@headsep=\skip55
-\dth@everypar=\toks50
+\dth@everypar=\toks49
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -572,17 +571,17 @@ Package: physics
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2023-06-05 L3 programming layer (loader) 
+Package: expl3 2023-01-16 L3 programming layer (loader) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvipdfmx.def
-File: l3backend-dvipdfmx.def 2023-04-19 L3 backend support: dvipdfmx
+File: l3backend-dvipdfmx.def 2023-01-16 L3 backend support: dvipdfmx
 \g__graphics_track_int=\count302
 \l__pdf_internal_box=\box89
 \g__pdf_backend_object_int=\count303
 \g__pdf_backend_annotation_int=\count304
 \g__pdf_backend_link_int=\count305
 ))
-Package: xparse 2023-02-02 L3 Experimental document command parser
+Package: xparse 2023-01-16 L3 Experimental document command parser
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2021/07/05 v2.14 Sectioning titles
@@ -591,7 +590,7 @@ Package: titlesec 2021/07/05 v2.14 Sectioning titles
 \aftertitleunit=\skip57
 \ttl@plus=\dimen307
 \ttl@minus=\dimen308
-\ttl@toksa=\toks51
+\ttl@toksa=\toks50
 \titlewidth=\dimen309
 \titlewidthlast=\dimen310
 \titlewidthfirst=\dimen311
@@ -694,25 +693,24 @@ LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
 (Font)              No change on input line 101.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
 (Font)              No change on input line 134.
+
+Overfull \hbox (45.697pt too wide) detected at line 146
+[]
+ []
+
 [1
 
 ] [2]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 208.
- [3] (./main.aux)
- ***********
-pLaTeX2e <2023-02-14>+1, based on
-LaTeX2e <2023-06-01>
-L3 programming layer <2023-06-05>
- ***********
- ) 
+(Font)              No change on input line 228.
+ [3] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 17000 strings out of 476390
- 309993 string characters out of 5799318
- 1882595 words of memory out of 5000000
- 37446 multiletter control sequences out of 15000+600000
- 528265 words of font info for 100 fonts, out of 8000000 for 9000
+ 17029 strings out of 476550
+ 312108 string characters out of 5805609
+ 1887340 words of memory out of 5000000
+ 37332 multiletter control sequences out of 15000+600000
+ 527165 words of font info for 98 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 101i,16n,107p,3227b,464s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,16n,104p,3227b,464s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (3 pages, 15956 bytes).
+Output written on main.dvi (3 pages, 18324 bytes).

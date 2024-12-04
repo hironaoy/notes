@@ -131,7 +131,20 @@
 \end{proposition}
 
 \begin{proof}
-  
+  上述の$\tilde{U}(t)$が方程式
+  \begin{align}
+    i\dv{\tilde{U}(t)}{t} = H\tilde{U}(t) + B(t)
+  \end{align}
+  を満たすことを実際に代入することによって示す．
+  \begin{align}
+    \begin{split}
+      i\dv{\tilde{U}}{t} - H\tilde{U}(t) - B(t) &= i\dv{U(t)}{t} + \dv{t}\int_0^t \dd t' U(t - t') B(t') - HU(t) + iH\int_0^t \dd t' U(t - t')B(t') - B(t) \\
+      &= i\dv{U(t)}{t} + \dv{t}\qty{U(t)\int_0^t \dd t' U(- t') B(t')} - HU(t) + iHU(t)\int_0^t \dd t' U(-t')B(t') - B(t) \\
+      &= i\dv{U(t)}{t} + \dv{U(t)}{t} \int_0^t \dd t' U(-t')B(t') + U(t) U(-t)B(t) -i\dv{U(t)}{t} - \dv{U(t)}{t} \int_0^t \dd t' U(-t')B(t') - B(t) \\
+      &= 0
+    \end{split}
+  \end{align}
+  ここで，時間発展演算子の性質$U(t_1 + t_2) = U(t_1)U(t_2)$を用いている．
 \end{proof}
 
 \begin{remark}
@@ -200,6 +213,13 @@
   \ket{x}\ket{0^m}\ket{0^w}\ket{f(x)} \longrightarrow \ket{x}\ket{f(x)}\ket{0^w}\ket{0^m}
 \end{align}
 これで，可逆な操作として古典回路を再現することができた．
+
+\begin{remark}
+  先述の，最終的に$\ket{0^m}$や$\ket{0^w}$に初期化されるレジスタを無視して次のように表記することがある．
+  \begin{align}
+    V_f \ket{x}\ket{0^m} = \ket{x}\ket{f(x)}
+  \end{align}
+\end{remark}
 \begin{proposition}
   量子計算機は古典計算機と少なくとも同等の性能を持つ．（古典計算機で行える計算は量子計算機でも行える）
 \end{proposition}
@@ -212,11 +232,20 @@
   Toffoliゲートにおいてターゲット・ビットの入力を1としておけば，このゲートは２つのコントロール・ビットを入力とし，ターゲット・ビットを出力とするNANDゲートと等価である．任意の古典回路はNANDゲートから構成可能であるので，量子計算は古典計算を含む．
 \end{example}
 
-\section{固定少数点数の表現（教科書1.8節）}
+%% \begin{gray}
+%%   {\bf Exercise 1.9} \hspace{1em} 写像$f: \qty{0, 1}^n \rightarrow \qty{0, 1}^n$が全単射であるとき，逆写像が存在し，$U_f: \ket{x} \mapsto \ket{f(x)}$を量子計算機上に実装できることを示せ．
+%% \end{gray}
+
+%% \begin{solution}
+%%   全単射である写像$f: X \rightarrow Y$に対して逆写像が存在することはより一般に示せる．いま，$f$は全単射であるからすべての$y \in Y$に対して$y = f(x)$となるような$x$がただ一つ存在する．ここで，$g: Y \rightarrow X$を$g(y) = x$となるように定めると$f^{-1} = g$である．よって，逆写像が存在する．
+
+  
+%% \end{solution}
+%% \section{固定少数点数の表現（教科書1.8節）}
 
 \begin{thebibliography}{9}
-\item Lin Lin, Lectures Note on Qunatum Algorithms for Scientific Computation
-  \item 石坂智・小川朋宏・河内亮周・木村元・林正人，「量子情報科学入門」共立出版
+\item Lin Lin, Lecture Notes on Quantum Algorithms for Scientific Computation
+\item 石坂智・小川朋宏・河内亮周・木村元・林正人，「量子情報科学入門」共立出版
 \item 藤井啓祐，「量子コンピュータの基礎と物理の接点」物性研究・電子版2017年11月号
 \end{thebibliography}
 \end{document}
