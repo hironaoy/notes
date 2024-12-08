@@ -15,6 +15,12 @@
   sharp corners
 }
 
+\newtcolorbox{black}{
+  colback = white,
+  colframe = black,
+  sharp corners
+}
+
 \numberwithin{equation}{section}
 
 \newtheoremstyle{seminar}
@@ -76,7 +82,7 @@
 \date{}
 \begin{document}
 \maketitle
-\section{エラーに関する重要な定理（教科書1.6節）}
+\section{誤差に関する重要な定理（教科書1.6節）}
 最初に演算子に対してノルムを定めておく．
 \begin{definition}
   演算子$A$のノルムを${\displaystyle \| A \| = \sup_{\|\ket{\varphi}\| = 1} \| A \ket{\varphi} \|}$と定める．これはノルムが満たすべき性質をすべて満たす．
@@ -85,7 +91,7 @@
   明らかにユニタリ演算子のノルムは1である．
 \end{remark}
 %% TODO - ノルムの性質を書いておくこと
-ローカルなエラーのグローバルなエラーへの寄与に関して次の2つの重要な定理がある．
+ローカルな誤差のグローバルな誤差への寄与に関して次の2つの重要な定理がある．
 \begin{proposition}
   ユニタリ演算子
   \begin{align}
@@ -156,7 +162,7 @@
 \end{remark}
 
 \begin{corollary}
-  命題1.2において$B(t) = E(t)\tilde{U}(t)$（ここで，$E(t)$は各時刻におけるエラーである）とすると
+  命題1.2において$B(t) = E(t)\tilde{U}(t)$（ここで，$E(t)$は各時刻における誤差である）とすると
   \begin{align}
     \| U(t) - \tilde{U}(t) \| < \int_0^t \dd t' \| E(t') \|
   \end{align}
@@ -190,30 +196,44 @@
 \end{example}
 
 \section{量子計算機の性能（教科書1.7節）}
-まず，{\bf アンコンピュテーション}（uncomputation）と呼ばれる方法を導入する．これは（必ずしも可逆とは限らない）任意の古典回路
-\begin{align}
-  f: \qty{0, 1}^n \rightarrow \qty{0, 1}^m; \quad x \mapsto f(x)
-\end{align}
-に対応する可逆計算を構成する方法である．
-
-可逆性を担保するための一つのアイデアとして入力（古典回路$f: x \mapsto f(x)$の$x$）を用意したレジスタに記録しておく，というものがある．そのような回路は入力レジスタ，結果レジスタ，補助レジスタを用意して，次のようにユニタリ演算を実現する．
-\begin{align}
-  U_f: \underbrace{\,\ket{x}\,}_{入力}\underbrace{\,\ket{0^m}\,}_{結果}\underbrace{\,\ket{0^w}\,}_{補助} \mapsto \ket{x}\ket{f(x)}\ket{g(x)}
-\end{align}
-計算の過程で生じる，ゴミは次のようにして可逆な過程で回収できる．新たにもう一つレジスタを追加し，結果をそこにコピーしておく．つまり
-\begin{align}
-  \ket{x}\ket{f(x)}\ket{g(x)}\underbrace{\ket{0^m}}_{追加したレジスタ} \longrightarrow \ket{x}\ket{f(x)}\ket{g(x)}\ket{f(x)}
-\end{align}
-とする．いま$\ket{f(x)}$は計算基底のいずれかであるから，これは古典的なコピーであり量子複製禁止定理に抵触しない．続いて，$U_f$のユニタリ性を用いて次のような操作を行う．
-\begin{align}
-  U^\dagger_f \otimes I \ket{x}\ket{f(x)}\ket{g(x)}\ket{f(x)} = \ket{x}\ket{0^m}\ket{0^w}\ket{f(x)}
-\end{align}
-最後に結果レジスタに結果を再格納する．これはSWAPゲートによって可能である．
-\begin{align}
-  \ket{x}\ket{0^m}\ket{0^w}\ket{f(x)} \longrightarrow \ket{x}\ket{f(x)}\ket{0^w}\ket{0^m}
-\end{align}
-これで，可逆な操作として古典回路を再現することができた．
-
+量子計算においてはユニタリ演算で表される過程を扱うので、任意の計算は可逆でなければならない。必ずしも可逆とは限らない古典計算を量子計算で再現する方法を与えるのが次の一連の命題である。
+\begin{proposition}
+  写像$f: \qty{0, 1}^n \rightarrow \qty{0, 1}^m$に対しユニタリ演算子
+  \begin{align}
+    U_f: \ket{x}\ket{0^m}\ket{0^w} \mapsto \ket{x}\ket{f(x)}\ket{g(x)}
+  \end{align}
+  を量子回路上に実装できる。
+\end{proposition}
+命題2.1の過程において生じるゴミ情報$\ket{g(x)}$は$\ket{0^w}$に初期化できることを述べるのが次の命題である。
+\begin{proposition}
+  次の性質
+  \begin{align}
+    U'_f\ket{x}\ket{0^m}\ket{0^w}\ket{0^m} = \ket{x}\ket{f(x)}\ket{0^w}\ket{0^m}
+  \end{align}
+  を満たすユニタリ演算$U'_f$が存在する。
+\end{proposition}
+\begin{proof}
+  まず、命題3.1のユニタリ演算$U_f$によって、次の演算が可能である。
+  \begin{align}
+    U_f \otimes I \ket{x}\ket{0^m}\ket{0^w} \ket{0^m} = \ket{x}\ket{f(x)}\ket{g(x)}\underbrace{\ket{0^m}}_{補助}
+  \end{align}
+  いま、上式中で「補助」と記されたレジスタに計算結果の$\ket{f(x)}$をCNOT演算によってコピーしておく。これは古典的なコピーであるので量子クローン禁止定理に抵触しない。
+  \begin{align}
+    \ket{x}\ket{f(x)}\ket{g(x)}\ket{0^m}\longrightarrow \mathrm{CNOT}\ket{x}\ket{f(x)}\ket{g(x)}\ket{0^m} = \ket{x}\ket{f(x)}\ket{g(x)}\ket{f(x)}
+  \end{align}
+  続いて、この状態に$U^\dagger_f \otimes I$を作用させる。
+  \begin{align}
+    \ket{x}\ket{f(x)}\ket{g(x)}\ket{f(x)} \longrightarrow U^\dagger_f \otimes I \ket{x}\ket{f(x)}\ket{g(x)}\ket{f(x)} = \ket{x}\ket{0^m}\ket{x^w}\ket{f(x)}
+  \end{align}
+  最後にSWAP演算によって、$f(x)$をもとのレジスタに戻す。
+  \begin{align}
+     \ket{x}\ket{0^m}\ket{x^w}\ket{f(x)}  \longrightarrow \mathrm{SWAP}\ket{x}\ket{0^m}\ket{x^w}\ket{f(x)} = \ket{x}\ket{f(x)}\ket{0^w}\ket{0^m}
+  \end{align}
+  この過程において行った演算はすべてユニタリ演算であるので、ユニタリ演算$U'_f$の存在が言えた。
+\end{proof}
+\begin{remark}
+  このようなレジスタ初期化の方法をアンコンピュテーション（uncomputation）という。
+\end{remark}
 \begin{remark}
   先述の，最終的に$\ket{0^m}$や$\ket{0^w}$に初期化されるレジスタを無視して次のように表記することがある．
   \begin{align}
@@ -231,21 +251,47 @@
 \begin{example}
   Toffoliゲートにおいてターゲット・ビットの入力を1としておけば，このゲートは２つのコントロール・ビットを入力とし，ターゲット・ビットを出力とするNANDゲートと等価である．任意の古典回路はNANDゲートから構成可能であるので，量子計算は古典計算を含む．
 \end{example}
+%% TODO: 重ね合わせ状態について言及しなければならない
 
-%% \begin{gray}
-%%   {\bf Exercise 1.9} \hspace{1em} 写像$f: \qty{0, 1}^n \rightarrow \qty{0, 1}^n$が全単射であるとき，逆写像が存在し，$U_f: \ket{x} \mapsto \ket{f(x)}$を量子計算機上に実装できることを示せ．
-%% \end{gray}
+\begin{gray}
+  {\bf Exercise 1.9} \hspace{1em} 写像$f: \qty{0, 1}^n \rightarrow \qty{0, 1}^n$が全単射であるとき，逆写像が存在し，$U_f: \ket{x} \mapsto \ket{f(x)}$を量子計算機上に実装できることを示せ．
+\end{gray}
 
-%% \begin{solution}
-%%   全単射である写像$f: X \rightarrow Y$に対して逆写像が存在することはより一般に示せる．いま，$f$は全単射であるからすべての$y \in Y$に対して$y = f(x)$となるような$x$がただ一つ存在する．ここで，$g: Y \rightarrow X$を$g(y) = x$となるように定めると$f^{-1} = g$である．よって，逆写像が存在する．
+\begin{solution}
+  全単射である写像$f: X \rightarrow Y$に対して逆写像が存在することはより一般に示せる．いま，$f$は全単射であるからすべての$y \in Y$に対して$y = f(x)$となるような$x$がただ一つ存在する．ここで，$g: Y \rightarrow X$を$g(y) = x$となるように定めると$f^{-1} = g$である．よって，逆写像が存在する．逆写像が存在するので
+  \begin{align}
+    U_f: \ket{x} \mapsto \ket{f(x)}, \quad  U^\dagger_f : \ket{x} \mapsto \ket{f^{-1}(x)}
+  \end{align}
+  とすれば、ユニタリ演算子として写像$f$を実装できる。
+\end{solution}
 
-  
-%% \end{solution}
-%% \section{固定少数点数の表現（教科書1.8節）}
+\section{算術演算（教科書1.8節）}
+2進法で表現された数値をビット列に対応させ、整数部分を表す桁と小数部分を表す桁をあらかじめ決めておくことで数値を表現する。例えば、次のようにビット列を解釈する。
+\begin{align}
+  (k_{n-1}k_{n-2} \cdots k_{m} . k_{m -1} \cdots k_0) = \sum_{j = 0}^{n} k_j 2^{j - m}
+\end{align}
+これを{\bf 固定小数点数}表現という。表現する数の正負が必要な場合には符号ビットを用意して表現する。
+
+この数値の表現と古典回路が可逆な量子回路によって再現できる事実を合わせると算術演算が可能であるとわかる。
+
+\section{フォールト・トレラント（fault-tolerant）量子計算（教科書1.9節）}
+現実に実装できる量子回路には誤差が生じるが、次の定理がその誤差があっても計算に支障がないことを保証する。証明は省略。
+\begin{theorem}
+  （しきい値定理；threshold theorem）量子ゲートや測定の際に生じる誤差がある特定の値以下であれば、任意の量子計算を任意の精度で行える。
+\end{theorem}
+
+\section{量子アルゴリズムの複雑性（教科書1.10節）}
+\begin{definition}
+  量子回路において、入力の量子ビット数を$n$とする。ある量子アルゴリズムを$\mathcal{O}(n^c)$個のプリミティブな量子ゲートで量子回路として実装できるとき、そのアルゴリズムは効率的（efficient）であるという。
+\end{definition}
+
+\section*{補遺：古典計算をプリミティブなゲートから構成する}
+すべてのブール関数に対応する古典回路はプリミティブなゲートから構成できる。そして、古典計算はブール関数として表せる。
 
 \begin{thebibliography}{9}
-\item Lin Lin, Lecture Notes on Quantum Algorithms for Scientific Computation
-\item 石坂智・小川朋宏・河内亮周・木村元・林正人，「量子情報科学入門」共立出版
-\item 藤井啓祐，「量子コンピュータの基礎と物理の接点」物性研究・電子版2017年11月号
+  \item  Lin Lin, Lecture Notes on Qunatum Algorithms for Scientific Computaion
+  \item  石坂智・小川朋宏・河内亮周・木村元・林正人，「量子情報科学入門」共立出版
+  \item  藤井啓祐，「量子コンピュータの基礎と物理の接点」物性研究・電子版 2017 年 11 月号
 \end{thebibliography}
+
 \end{document}
