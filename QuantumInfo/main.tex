@@ -196,43 +196,51 @@
 \end{example}
 
 \section{量子計算機の性能（教科書1.7節）}
-量子計算においてはユニタリ演算で表される過程を扱うので、任意の計算は可逆でなければならない。必ずしも可逆とは限らない古典計算を量子計算で再現する方法を与えるのが次の一連の命題である。
+量子計算においてはユニタリ演算で表される過程を扱うので，任意の計算は可逆でなければならない．必ずしも可逆とは限らない古典計算を量子計算で再現する方法を与えるのが次の一連の命題である．
 \begin{proposition}
   写像$f: \qty{0, 1}^n \rightarrow \qty{0, 1}^m$に対しユニタリ演算子
   \begin{align}
-    U_f: \ket{x}\ket{0^m}\ket{0^w} \mapsto \ket{x}\ket{f(x)}\ket{g(x)}
+    U_f: \ket{x}\ket{0^m}\ket{0^w} \mapsto \ket{x}\ket{f(x)}\ket{g(x)} \label{unitaryop}
   \end{align}
-  を量子回路上に実装できる。
+  を量子回路として実装できる．
 \end{proposition}
-命題2.1の過程において生じるゴミ情報$\ket{g(x)}$は$\ket{0^w}$に初期化できることを述べるのが次の命題である。
+
+\begin{remark}
+  {\bf（命題3.1の不完全な証明）}量子回路として実装可能なゲートであるToffoliゲート（CCNOTゲート）
+  \begin{align}
+    \mathrm{CCNOT}\, \ket{x_1}\ket{x_2}\ket{x_3} = \ket{x_1}\ket{x_2}\ket{(x_1x_2)\oplus x_3}
+  \end{align}
+  において$x_3 = 1$として，入力をコントロール・ビット，出力をターゲット・ビットとみなせばNANDゲートを再現する．任意の写像$f:\qty{0, 1}^n \rightarrow \qty{0, 1}^m$はNANDから構成可能であったので，NANDを量子回路として実装できた以上，任意の写像$f:\qty{0, 1}^n \rightarrow \qty{0, 1}^m$に対応するユニタリ演算子を量子回路として実装できることが言える．
+\end{remark}
+命題2.1の過程において生じるゴミ情報$\ket{g(x)}$は$\ket{0^w}$に初期化できることを述べるのが次の命題である．
 \begin{proposition}
   次の性質
   \begin{align}
     U'_f\ket{x}\ket{0^m}\ket{0^w}\ket{0^m} = \ket{x}\ket{f(x)}\ket{0^w}\ket{0^m}
   \end{align}
-  を満たすユニタリ演算$U'_f$が存在する。
+  を満たすユニタリ演算$U'_f$が存在する．
 \end{proposition}
 \begin{proof}
-  まず、命題3.1のユニタリ演算$U_f$によって、次の演算が可能である。
+  まず，命題3.1のユニタリ演算$U_f$によって，次の演算が可能である．
   \begin{align}
     U_f \otimes I \ket{x}\ket{0^m}\ket{0^w} \ket{0^m} = \ket{x}\ket{f(x)}\ket{g(x)}\underbrace{\ket{0^m}}_{補助}
   \end{align}
-  いま、上式中で「補助」と記されたレジスタに計算結果の$\ket{f(x)}$をCNOT演算によってコピーしておく。これは古典的なコピーであるので量子クローン禁止定理に抵触しない。
+  いま，上式中で「補助」と記されたレジスタに計算結果の$\ket{f(x)}$をCNOT演算によってコピーしておく．これは古典的なコピーであるので量子クローン禁止定理に抵触しない．
   \begin{align}
     \ket{x}\ket{f(x)}\ket{g(x)}\ket{0^m}\longrightarrow \mathrm{CNOT}\ket{x}\ket{f(x)}\ket{g(x)}\ket{0^m} = \ket{x}\ket{f(x)}\ket{g(x)}\ket{f(x)}
   \end{align}
-  続いて、この状態に$U^\dagger_f \otimes I$を作用させる。
+  続いて，この状態に$U^\dagger_f \otimes I$を作用させる．
   \begin{align}
     \ket{x}\ket{f(x)}\ket{g(x)}\ket{f(x)} \longrightarrow U^\dagger_f \otimes I \ket{x}\ket{f(x)}\ket{g(x)}\ket{f(x)} = \ket{x}\ket{0^m}\ket{x^w}\ket{f(x)}
   \end{align}
-  最後にSWAP演算によって、$f(x)$をもとのレジスタに戻す。
+  最後にSWAP演算によって，$f(x)$をもとのレジスタに戻す．
   \begin{align}
      \ket{x}\ket{0^m}\ket{x^w}\ket{f(x)}  \longrightarrow \mathrm{SWAP}\ket{x}\ket{0^m}\ket{x^w}\ket{f(x)} = \ket{x}\ket{f(x)}\ket{0^w}\ket{0^m}
   \end{align}
-  この過程において行った演算はすべてユニタリ演算であるので、ユニタリ演算$U'_f$の存在が言えた。
+  この過程において行った演算はすべてユニタリ演算であるので，ユニタリ演算$U'_f$の存在が言えた．
 \end{proof}
 \begin{remark}
-  このようなレジスタ初期化の方法をアンコンピュテーション（uncomputation）という。
+  このようなレジスタ初期化の方法をアンコンピュテーション（uncomputation）という．
 \end{remark}
 \begin{remark}
   先述の，最終的に$\ket{0^m}$や$\ket{0^w}$に初期化されるレジスタを無視して次のように表記することがある．
@@ -245,13 +253,8 @@
 \end{proposition}
 
 \begin{proof}
-  先述のアンコンピュテーションの方法を用いれば，プリミティブな古典回路（例えばNAND）を量子回路として再現できる．任意の古典回路はそのようなプリミティブな回路から構成できるのであったから，プリミティブな回路を量子回路として再現できた以上，量子計算は自明に古典計算を含むことが言える．
+  先述の一連の命題によって，任意の写像$f: \qty{0, 1}^n \rightarrow \qty{0, 1}^m$を量子回路として実装でき，また，その際に生じるゴミ情報も適切に初期化できることがわかる．古典計算機上で行われる計算は写像$f:\qty{0, 1}^n \rightarrow \qty{0, 1}^m$に対応するので，量子計算は自明に個展計算を含む．
 \end{proof}
-
-\begin{example}
-  Toffoliゲートにおいてターゲット・ビットの入力を1としておけば，このゲートは２つのコントロール・ビットを入力とし，ターゲット・ビットを出力とするNANDゲートと等価である．任意の古典回路はNANDゲートから構成可能であるので，量子計算は古典計算を含む．
-\end{example}
-%% TODO: 重ね合わせ状態について言及しなければならない
 
 \begin{gray}
   {\bf Exercise 1.9} \hspace{1em} 写像$f: \qty{0, 1}^n \rightarrow \qty{0, 1}^n$が全単射であるとき，逆写像が存在し，$U_f: \ket{x} \mapsto \ket{f(x)}$を量子計算機上に実装できることを示せ．
@@ -262,31 +265,28 @@
   \begin{align}
     U_f: \ket{x} \mapsto \ket{f(x)}, \quad  U^\dagger_f : \ket{x} \mapsto \ket{f^{-1}(x)}
   \end{align}
-  とすれば、ユニタリ演算子として写像$f$を実装できる。
+  とすれば，ユニタリ演算子として写像$f$を実装できる．
 \end{solution}
 
 \section{算術演算（教科書1.8節）}
-2進法で表現された数値をビット列に対応させ、整数部分を表す桁と小数部分を表す桁をあらかじめ決めておくことで数値を表現する。例えば、次のようにビット列を解釈する。
+2進法で表現された数値をビット列に対応させ，整数部分を表す桁と小数部分を表す桁をあらかじめ決めておくことで数値を表現する．例えば，次のようにビット列を解釈する．
 \begin{align}
   (k_{n-1}k_{n-2} \cdots k_{m} . k_{m -1} \cdots k_0) = \sum_{j = 0}^{n} k_j 2^{j - m}
 \end{align}
-これを{\bf 固定小数点数}表現という。表現する数の正負が必要な場合には符号ビットを用意して表現する。
+これを{\bf 固定小数点数}表現という．表現する数の正負が必要な場合には符号ビットを用意して表現する．
 
-この数値の表現と古典回路が可逆な量子回路によって再現できる事実を合わせると算術演算が可能であるとわかる。
+この数値の表現と古典回路が可逆な量子回路によって再現できる事実を合わせると算術演算が可能であるとわかる．
 
-\section{フォールト・トレラント（fault-tolerant）量子計算（教科書1.9節）}
-現実に実装できる量子回路には誤差が生じるが、次の定理がその誤差があっても計算に支障がないことを保証する。証明は省略。
+\section{フォールト・トレラント量子計算（教科書1.9節）}
+現実に実装できる量子回路には誤差が生じるが，次の定理がその誤差があっても計算に支障がないことを保証する．証明は省略．
 \begin{theorem}
-  （しきい値定理；threshold theorem）量子ゲートや測定の際に生じる誤差がある特定の値以下であれば、任意の量子計算を任意の精度で行える。
+  （しきい値定理；threshold theorem）量子ゲートや測定の際に生じる誤差がある特定の値以下であれば，任意の量子計算を任意の精度で行える．
 \end{theorem}
 
-\section{量子アルゴリズムの複雑性（教科書1.10節）}
-\begin{definition}
-  量子回路において、入力の量子ビット数を$n$とする。ある量子アルゴリズムを$\mathcal{O}(n^c)$個のプリミティブな量子ゲートで量子回路として実装できるとき、そのアルゴリズムは効率的（efficient）であるという。
-\end{definition}
-
-\section*{補遺：古典計算をプリミティブなゲートから構成する}
-すべてのブール関数に対応する古典回路はプリミティブなゲートから構成できる。そして、古典計算はブール関数として表せる。
+%% \section{計算量の解析（教科書1.10節）}
+%% \begin{definition}
+%%   量子回路において，入力の量子ビット数を$n$とする．ある量子アルゴリズムを$\mathcal{O}(n^c)$個のプリミティブな量子ゲートで量子回路として実装できるとき，そのアルゴリズムは効率的（efficient）であるという．
+%% \end{definition}
 
 \begin{thebibliography}{9}
   \item  Lin Lin, Lecture Notes on Qunatum Algorithms for Scientific Computaion
