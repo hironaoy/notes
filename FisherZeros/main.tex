@@ -1,0 +1,80 @@
+\documentclass[aps, 12pt]{revtex4-2}
+
+\usepackage{amsmath, physics}
+\begin{document}
+\title{Note: Fisher zeros for two dimensional Ising model lie on unit circle in the complex $w := \sinh \beta J$ plane.}
+\author{Hironao Yamato}
+\date{\today}
+\maketitle
+
+\section{The setup and the proof}
+The exanct expression of the partition function of a finite two dimensional Ising model is as follows.
+\begin{align}
+  Z = 2^N\prod_{j = 1}^{L} \prod_{k = 1}^{L} \qty{\qty(\frac{1 + z^2}{1 - z^2})^2 - \frac{2z}{1 - z^2}\qty(\cos \frac{2\pi j}{L} + \cos \frac{2\pi k}{L})}^{1/2}, \quad z := \tanh\beta J
+\end{align}
+Now let us rewrite this expression in terms of a new variable $w := \sinh \beta J$. Since
+\begin{gather}
+  \qty(\frac{1 + z^2}{1 - z^2})^2 = \qty(\frac{2}{1 - z^2} - 1)^2 = \qty(2\cosh^2 \beta J - 1)^2 = \qty(\cosh 2\beta J)^2 = 1 + \sinh^2 2\beta J, \\
+  \frac{2z}{1 - z^2} = 2 \cosh ^2 \beta J \tanh \beta J = 2\cosh \beta J \sinh \beta J = \sinh 2\beta J,
+\end{gather}
+then
+\begin{align}
+  Z = 2^N\prod_{j = 1}^{L} \prod_{k = 1}^{L} \qty{1 + w^2 - w\qty(\cos \frac{2\pi j}{L} + \cos \frac{2\pi k}{L})}^{1/2}, \quad w := \sinh 2 \beta J.
+\end{align}
+For simplicity, we now write
+\begin{align}
+  a_L(j,k) := \cos \frac{2\pi j}{L} + \cos \frac{2\pi k}{L},
+\end{align} 
+and 
+\begin{align}
+  Z = 2^N\prod_{j = 1}^{L} \prod_{k = 1}^{L} \qty{w^2 - a_L(j,k)w + 1}^{1/2}, \quad w := \sinh 2 \beta J.
+\end{align}
+Now we can easily find the zeros of $Z$ in terms of $w$ by solving the equation
+\begin{align}
+  w^2 - a_L(j,k)w + 1 = 0
+\end{align}
+for all $j$ and $k$. Using the quadratic formula we get
+\begin{align}
+  w = \frac{a_L(j,k)}{2} \pm i \frac{\sqrt{4 - a^2_L(j,k)}}{2}
+\end{align}
+As one can easily see from the form of the solution, $w$ lie on unit circle $\qty|w| = 1$.
+\begin{align}
+  \qty|w|^2 = \qty{\frac{a_L(j,k)}{2}}^2 + \qty{\frac{\sqrt{4 - a_L^2(j,k)}}{2}}^2 = \frac{a_L^2(j,k)}{4} + \frac{4 - a^2_L(j,k)}{4} = 1
+\end{align}
+
+In the case of a system described by two dimensional Ising model, we can see that some singuralityies appear on the real axis, and some of the $w$ give a real inverse temperature. It can be obtained by the following procedure. First of all, the real $w$ that satisify the realation $\qty|w| = 1$ are $\pm 1$. Then
+\begin{align}
+  w = \sinh 2\beta J = \frac{e^{2\beta J} - e^{-2\beta J}}{2} = \pm 1 \quad \longrightarrow \quad \qty(e^{2\beta J})^2 \pm 2 e^{2\beta J} - 1= 0. \label{eqn}
+\end{align}
+By solving the equation above \eqref{eqn}, we get
+\begin{align}
+  e^{2\beta J} = \sqrt{2} \pm 1 \quad \longrightarrow \quad e^{\beta J} = \qty(\sqrt{2} \pm 1)^{1/2}
+\end{align}
+Here we only consider the solutions which gives the real inverse temperature. The $z = \tanh \beta J$ that corresponds to the real $w$ at singularity is as follows.
+\begin{align}
+  z = \tanh \beta J = \frac{e^{\beta J} - e^{-\beta J}}{e^{\beta J} + e^{-\beta J}} = \sqrt{2} - 1 \, \mathrm{or} \, 1 - \sqrt{2}.
+\end{align}
+According to Fisher, the former solution locate the ferromagnetic temperature and the latter locate the antiferromagnetic temperature.
+%% TODO: Prove this.
+
+\section{Comparison with the classical prediction}
+%% TODO: Add the result by mean field theory
+Classicaly, we can predict the transition point by taking the thermodynamic limit of the free energy per site and looking for a point where the free energy gets singular. In this case, the free energy per site in the thermodynamic limit is as follows.
+\begin{align}
+  f = -\frac{1}{\beta} \log \frac{2}{1 - z^2} - \frac{1}{2\beta} \int_0^{2\pi} \frac{\dd \omega_j}{2\pi} \int_0^{2\pi} \frac{\dd \omega_k}{2\pi} \log \qty{(1 + z^2)^2 - 2z(1 - z^2)\qty(\cos \omega_j + \cos \omega_k)}
+\end{align}
+Here the integrand is minmized, in term of $\omega_j$ and $\omega_k$, at the point where satisify $\cos \omega_j + \cos \omega_k = 2$ and
+\begin{align}
+  (1 + z^2)^2 - 4z(1 - z^2) = (z^2 + 2z - 1)^2 \geq 0,
+\end{align}
+then we get
+\begin{align}
+  (1 + z^2)^2 - 2z(1 - z^2)\qty(\cos \omega_j + \cos \omega_k) \geq 0.
+\end{align}
+This implies that at the singular points, $z^2 + 2z - 1 = 0$ has to be satisified. For ferromagnetic model, by taking the positive solution, we can predict the transition point
+\begin{align}
+  z = \sqrt{2} - 1
+\end{align}
+which is the same value as the one predicted above using the method of Lee and Yang.
+\bibliography{basename of .bib file}
+\end{document}
